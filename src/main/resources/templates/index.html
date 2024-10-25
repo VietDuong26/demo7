@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+          integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+<div id="header"
+     style="height: 80px;width: 100%;display: flex;border-bottom:1px solid;background-color: azure;gap:40%;">
+    <div style="width: 30%;height: 100%;display: flex;justify-content: center;">
+        <div
+                style="width: 50%;height: 100%;background-image: url(/image/th.jfif);background-size: 100% 100%;">
+        </div>
+    </div>
+    <div style="width:30%;display:flex;justify-content: center;align-items: center;gap:10px;cursor: pointer;">
+        <div>
+            <i class="fas fa-user" style="font-size: 30px;"></i>
+        </div>
+        <div>Đăng nhập
+        </div>
+    </div>
+</div>
+<div id="body" style="width:100%;display: flex;justify-content: center;margin-top:10px;">
+    <div style="width:85%;">
+        <div style="height: 50px;display:flex;align-items: center;gap:30px;background-color: aliceblue;">
+            <div
+                    style="width:150px;height:80%;background-color: antiquewhite;display:flex;justify-content: center;align-items: center;border-radius: 3px;">
+                <div
+                        style="width: 10%;height: 35%;background-image: url(/image/newest.svg);background-size: 100% 100%;">
+                </div>
+                <div style="font-weight: 650;">Tin mới nhất</div>
+            </div>
+            <div style="width: 1px;background-color: grey;height: 60%;"></div>
+            <div
+                    style="width:30px;height: 25px;background-image: url(/image/increase.png);background-size: 100% 100%;">
+            </div>
+            <div
+                    style="width:230px;cursor:pointer;height:80%;background-color: antiquewhite;border-radius: 3px;display:flex;justify-content: center;align-items: center;">
+                Kỳ họp thứ 8 Quốc hội
+                khóa XV
+            </div>
+            <div
+                    style="width:230px;cursor:pointer;height:80%;background-color: antiquewhite;border-radius: 3px;display:flex;justify-content: center;align-items: center;">
+                Kỳ họp thứ 8 Quốc hội
+                khóa XV
+            </div>
+            <div
+                    style="width:230px;cursor:pointer;height:80%;background-color: antiquewhite;border-radius: 3px;display:flex;justify-content: center;align-items: center;">
+                Kỳ họp thứ 8 Quốc hội
+                khóa XV
+            </div>
+        </div>
+        <div id="post_list" th:each="post:${posts}" style="margin-top:30px;display: flex;gap:30px;flex-wrap: wrap;">
+            <a th:href="${'/post_detail?id='+post.id}" style="text-decoration: none;color: black;">
+                <div style="height:280px;width: 100%;display:flex;gap:20px;cursor:pointer;">
+
+                    <div
+                            style="width:30%;height: 100%;background-image: url(/image/logo-24h-new.svg);background-size: 100% 100%;">
+                    </div>
+                    <div style="width:65%;max-height: 80%;">
+                        <p id="title" style="font-size:30px;" th:text="${post.titile}"></p>
+                        <div id="content"
+                             style="color:rgba(128, 128, 128, 0.756);display: -webkit-box;max-width: 100%;-webkit-line-clamp: 6;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;"
+                             th:text="${post.content}">
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div style="width:100%;display: flex;justify-content: end;margin-right:30px;">
+            <a onclick="getMorePost()" style="cursor: pointer;color:blue;">Xem thêm</a>
+        </div>
+    </div>
+</div>
+<div id="footer"
+     style="width: 100%;display: flex;background-color: azure;align-items: center;justify-content: center;margin-top:30px;">
+    <div style="width: 100%;height:300px;display: flex;justify-content: center;align-items: center;">
+        <div style="width:85%;border-top:1px solid red;height:200px;display: flex;gap:50px;">
+            <div style="margin-top:30px;">
+                <div
+                        style="background-image: url(/image/logo-24h-new.svg);background-size: 100% 100%;width:50px;height:30px;">
+                </div>
+                <div
+                        style="display:flex;justify-content: center;gap: 5px;color:rgb(194, 193, 193);margin-top:10px;">
+                    <div><i class="fab fa-youtube-square"></i></div>
+                    <div><i class="fab fa-facebook-square"></i></div>
+                </div>
+            </div>
+            <div style="width: 30%;margin-top:30px;line-height: 25px;">Tổng biên tập: Lê Thế Chữ<br/>
+
+                Giấy phép hoạt động báo điện tử tiếng Việt, tiếng Anh Số 561/GP-BTTTT, cấp ngày 25-11-2022.<br/>
+
+                Thông tin tòa soạn - Thành Đoàn TP.HCM
+            </div>
+            <div style="width: 35%;margin-top:30px;line-height: 25px;">Địa chỉ: 60A Hoàng Văn Thụ, P.9, Q.Phú Nhuận,
+                Tp. Hồ Chí Minh<br/>
+
+                Hotline: 0918.033.133 - Email: tto@tuoitre.com.vn<br/>
+
+                Phòng Quảng Cáo Báo Tuổi Trẻ: 028.39974848<br/>
+
+                Liên hệ Quảng cáo Điều khoản bảo mật Liên hệ góp ý RSS
+            </div>
+            <div style="margin-top:30px;">
+                <p style="font-weight: bold;">Đăng ký email - Mở cổng thông tin</p>
+                <p>Luôn cập nhật tin tức, sự kiện mới nhất</p>
+                <div
+                        style="width:100%;background-color: rgba(0, 0, 255, 0.831);height:50px;border-radius: 8px;display:flex;justify-content: center;align-items: center;gap:10px;">
+                    <div
+                            style="background-image: url(/image/letter.png);background-size: 100% 100%;width:20px;height:23px;">
+                    </div>
+                    <div style="color:white">Đăng kí tại đây</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/index.js"></script>
+</body>
+
+</html>
